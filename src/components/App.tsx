@@ -1,9 +1,15 @@
 import React from 'react';
+import SplashPage from './SplashPage'
+import GlobalStyle from './App.styles';
 
 const App = () => {
 
   return (
-    <div>Portfolio</div>
+    <>
+      <GlobalStyle />
+        <div>Portfolio</div>
+      <SplashPage></SplashPage>
+    </>
   )
 }
 
