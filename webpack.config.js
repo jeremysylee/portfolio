@@ -22,17 +22,26 @@ const config = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
         }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
     module: {
         rules: [
-            // {
-            //     test: /\.(ts|tsx)$/i,
-            //     loader: 'ts-loader',
-            //     exclude: ['/node_modules/'],
-            // },
+            {
+                test: /\.(ts|tsx)$/i,
+                include: path.resolve(__dirname, 'src'),
+                exclude: /node_modules/,
+                use: [{
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', {
+                        "targets": "defaults"
+                      }],
+                      '@babel/preset-react',
+                      "@babel/preset-typescript",
+                    ],
+                  },
+                }],
+            },
             {
                 test: /\.css$/i,
                 use: [stylesHandler,'css-loader'],
@@ -45,22 +54,6 @@ const config = {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
-            {
-                test: /\.(ts|tsx)$/i,
-                include: path.resolve(__dirname, 'src'),
-                exclude: /node_modules/,
-                use: [{
-                  loader: 'babel-loader',
-                  options: {
-                    presets: [
-                      ['@babel/preset-env', {
-                        "targets": "defaults"
-                      }],
-                      '@babel/preset-react'
-                    ]
-                  }
-                }]
-            }
         ],
     },
     resolve: {
