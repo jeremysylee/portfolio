@@ -10,7 +10,9 @@ const HeaderContainer = styled.div`
 const Header = () => (
   <HeaderContainer>
     <span>Home</span>
+    <div style={{ margin: '10px' }}></div>
     <span>Projects</span>
+    <div style={{ margin: '10px' }}></div>
     <span>Resume</span>
   </HeaderContainer>
 )
